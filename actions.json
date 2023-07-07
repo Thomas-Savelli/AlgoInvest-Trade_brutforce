@@ -1,0 +1,104 @@
+{
+"actions":[
+    {
+        "Action #":"Action-1",
+        "Coût par action (en euros)":"20",
+        "Bénéfice (aprés 2 ans)":"5%"
+    },
+    {
+        "Action #":"Action-2",
+        "Coût par action (en euros)":"30",
+        "Bénéfice (aprés 2 ans)":"10%"
+    },
+    {
+        "Action #":"Action-3",
+        "Coût par action (en euros)":"50",
+        "Bénéfice (aprés 2 ans)":"15%"
+    },
+    {
+        "Action #":"Action-4",
+        "Coût par action (en euros)":"70",
+        "Bénéfice (aprés 2 ans)":"20%"
+    },
+    {
+        "Action #":"Action-5",
+        "Coût par action (en euros)":"60",
+        "Bénéfice (aprés 2 ans)":"17%"
+    },
+    {
+        "Action #":"Action-6",
+        "Coût par action (en euros)":"80",
+        "Bénéfice (aprés 2 ans)":"25%"
+    },
+    {
+        "Action #":"Action-7",
+        "Coût par action (en euros)":"22",
+        "Bénéfice (aprés 2 ans)":"7%"
+    },
+    {
+        "Action #":"Action-8",
+        "Coût par action (en euros)":"26",
+        "Bénéfice (aprés 2 ans)":"11%"
+    },
+    {
+        "Action #":"Action-9",
+        "Coût par action (en euros)":"48",
+        "Bénéfice (aprés 2 ans)":"13%"
+    },
+    {
+        "Action #":"Action-10",
+        "Coût par action (en euros)":"34",
+        "Bénéfice (aprés 2 ans)":"27%"
+    },
+    {
+        "Action #":"Action-11",
+        "Coût par action (en euros)":"42",
+        "Bénéfice (aprés 2 ans)":"17%"
+    },
+    {
+        "Action #":"Action-12",
+        "Coût par action (en euros)":"110",
+        "Bénéfice (aprés 2 ans)":"9%"
+    },
+    {
+        "Action #":"Action-13",
+        "Coût par action (en euros)":"38",
+        "Bénéfice (aprés 2 ans)":"23%"
+    },
+    {
+        "Action #":"Action-14",
+        "Coût par action (en euros)":"14",
+        "Bénéfice (aprés 2 ans)":"1%"
+    },
+    {
+        "Action #":"Action-15",
+        "Coût par action (en euros)":"18",
+        "Bénéfice (aprés 2 ans)":"3%"
+    },
+    {
+        "Action #":"Action-16",
+        "Coût par action (en euros)":"8",
+        "Bénéfice (aprés 2 ans)":"8%"
+    },
+    {
+        "Action #":"Action-17",
+        "Coût par action (en euros)":"4",
+        "Bénéfice (aprés 2 ans)":"12%"
+    },
+    {
+        "Action #":"Action-18",
+        "Coût par action (en euros)":"10",
+        "Bénéfice (aprés 2 ans)":"14%"
+    },
+    {
+        "Action #":"Action-19",
+        "Coût par action (en euros)":"24",
+        "Bénéfice (aprés 2 ans)":"21%"
+    },
+    {
+        "Action #":"Action-20",
+        "Coût par action (en euros)":"114",
+        "Bénéfice (aprés 2 ans)":"18%"
+    }
+  ]
+}
