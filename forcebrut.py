@@ -1,3 +1,4 @@
+# Solution classique - Algorithme par Force Brut
 import json
 import itertools
 
@@ -29,13 +30,6 @@ def load_json():
         }
 
         liste_actions.append(objet_action)
-
-    # # Vérification et affichage des données des actions
-    # for action in liste_actions:
-    #     print(f"Nom : {action['nom']}")
-    #     print(f"Coût : {action['cout']} euros")
-    #     print(f"Bénéfice : {action['benefice']}")
-    #     print("------------------------")
 
     return liste_actions
 
