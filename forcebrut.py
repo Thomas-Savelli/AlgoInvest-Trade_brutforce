@@ -1,41 +1,30 @@
 # Solution classique - Algorithme par Force Brut
-import json
 import itertools
+import csv
+from tqdm import tqdm
 
+def load_csv(filepath):
+    """
+    Charge les données à partir du fichier CSV.
+    """
+    with open(filepath, "r", encoding="latin-1") as file:
+        csv_reader = csv.reader(file, delimiter=',')
 
-def load_json():
-    """ Permet de récupérer et charger les données de actions.json """
-    # Premiere étape -> Charger le contenu de actions.json
-    with open('actions.json', 'r') as file:
-        contenu_json = file.read()
+        # Ignore la premiere ligne (en tête)
+        next(csv_reader)
 
-    # Deuxieme étape -> Parser le contenu de actions.json
-    donnees_actions = json.loads(contenu_json)
-
-    # Troisieme étape -> Accéder aux données des actions
-    actions = donnees_actions["actions"]
-
-    # Quatrieme étape -> Stocker les données dans une liste d'objet pour chaque action
-    liste_actions = []
-    for action in actions:
-        nom = action["Action #"]
-        cout = action["Cout par action (en euros)"]
-        benefice = action["Benefice (apres 2 ans)"]
-
-        # Création d'un objet représentant l'action
-        objet_action = {
-            "nom": nom,
-            "cout": cout,
-            "benefice": benefice
-        }
-
-        liste_actions.append(objet_action)
-
-    return liste_actions
+        actions = []
+        for row in csv_reader:
+            actions.append({
+                "name": row[0],
+                "price": float(row[1]),
+                "profit": float(row[2])
+            })
+    return actions
 
 
 # Appel de la fontion de chargement des actions
-liste_actions = load_json()
+liste_actions = load_csv('dataset1.csv')
 
 meilleure_combinaison = None
 benefice_maximum = 0
@@ -47,27 +36,27 @@ combinaisons = []
 # Générer toutes les combinaisons possibles avec itertools.combinations
 # Ce qui nous permet d'éviter d'écrire manuellement un algorithme de génération de combinaison
 # Les combinaisons sont stockées dans la liste [combinaisons]
-for i in range(1, len(liste_actions) + 1):
+for i in tqdm(range(1, len(liste_actions) + 1)):
     combinaisons += itertools.combinations(liste_actions, i)
 
 print(f"Nombre de générations totales de combinaisons possibles : {len(combinaisons)}")
 
 # Parcourir les combinaisons et trouver la meilleure
-for combinaison in combinaisons:
+for combinaison in tqdm(combinaisons):
     # Initialisation des variables à 0 pour chaque nouvelle combinaison
     cout_total = 0
     benefice_total = 0
 
     # Vérifier si la combinaison respecte les contraintes
     for action in combinaison:
-        cout = action["cout"]
-        benefice = action["benefice"]
+        cout = action["price"]
+        benefice = action["profit"]
 
         # Ajout du cout au cout_total
-        cout_total += int(cout)
+        cout_total += cout
 
         # On récupére le benefice et on effectue les calculs pour obtenir le benefice total prévu
-        benefice_total += int(cout) * (float(benefice.strip('%')) / 100)
+        benefice_total += cout * (benefice / 100)
 
     if cout_total <= 500 and benefice_total > benefice_maximum:
         benefice_maximum = benefice_total
@@ -80,9 +69,9 @@ print("------------------------------")
 print("")
 print("Meilleure combinaison :")
 for action in meilleure_combinaison:
-    nom = action['nom']
-    cout = action['cout']
-    investissement = int(cout)
+    nom = action['name']
+    cout = action['price']
+    investissement = cout
     print(f"Action : {nom} (Investissement : {investissement} €)")
 
 print(f"Investissement total : {investissement_total} €")
