@@ -1,5 +1,6 @@
 # Solution Optimale - Programmation Dynamique
 import csv
+from tqdm import tqdm
 
 
 def load_csv(filepath):
@@ -14,11 +15,12 @@ def load_csv(filepath):
 
         actions = []
         for row in csv_reader:
-            actions.append({
-                "name": row[0],
-                "price": float(row[1]),
-                "profit": float(row[2])
-            })
+            if float(row[1]) > 0:
+                actions.append({
+                    "name": row[0],
+                    "price": float(row[1]),
+                    "profit": float(row[2])
+                })
     return actions
 
 
@@ -28,13 +30,19 @@ def calculate_best_combination(actions):
     """
     n = len(actions)  # Nombre d'actions disponibles
     dp = [[0.0] * (MAX_INVESTMENT + 1) for _ in range(n + 1)]  # Matrice pour stocker les résultats intermédiaires
-    selected_actions = [[None] * (MAX_INVESTMENT + 1) for _ in range(n + 1)]  # Matrice pour stocker les actions sélectionnées
+
+    # Matrice pour stocker les actions sélectionnées
+    selected_actions = [[None] * (MAX_INVESTMENT + 1) for _ in range(n + 1)]
 
     # Parcours des actions selectionnées
-    for i in range(1, n + 1):
+    for i in tqdm(range(1, n + 1)):
         action = actions[i - 1]
         action_cost = action['price']
         action_profit = action['profit']
+
+        # Vérifie si le coût de l'action est supérieur à MAX_INVESTMENT
+        if action_cost > MAX_INVESTMENT:
+            continue
 
         # Parcours des investissements possibles
         for j in range(MAX_INVESTMENT + 1):
@@ -95,9 +103,7 @@ def print_results(best_combination, total_investment, total_profit):
 
 def main():
     # Chargement des actions à partir du fichier csv
-    actions = load_csv("dataset1.csv")
-    # Appel de la fonction pour créer la liste d'actions
-    # actions = create_object(data)
+    actions = load_csv("dataset2.csv")
     # Appel de la fonction pour calculer les combinaisons d'actions ainsi que la meilleure combinaison
     best_combination, total_investment, total_profit = calculate_best_combination(actions)
     print_results(best_combination, total_investment, total_profit)

@@ -3,6 +3,7 @@ import itertools
 import csv
 from tqdm import tqdm
 
+
 def load_csv(filepath):
     """
     Charge les données à partir du fichier CSV.
@@ -24,7 +25,7 @@ def load_csv(filepath):
 
 
 # Appel de la fontion de chargement des actions
-liste_actions = load_csv('dataset1.csv')
+liste_actions = load_csv('actions.csv')
 
 meilleure_combinaison = None
 benefice_maximum = 0
